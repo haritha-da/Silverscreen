@@ -72,9 +72,9 @@ Raw Sources: source('silver_screen', 'nj_001'), etc.
 
 Staging Models: stg_nj_001, etc.
 
-Intermediate Models: int_movie_sales
+Intermediate Models: unify_locations
 
-Final Model: final_silver_screen_table
+Final Model: final_movie_performance
 
 🌟 Key Transformations
 
@@ -93,7 +93,7 @@ Ensuring data quality with built-in and custom tests in dbt Cloud.
 ✔️ not_null – Ensures movie_id, movie_title, and month are always populated.
 ✔️ unique – Ensures movie_id + month + location is unique.
 
-🌟 Custom Tests (tests/custom_tests.sql)
+🌟 Custom Tests (tests/Test_non_negative_values)
 
 ✔️ Validate Data Integrity: Ensures rental_cost and revenue are non-negative.
 
