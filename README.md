@@ -26,8 +26,6 @@ Each theater location records data differently, requiring cleaning, standardizat
 
 ⚙️ dbt Cloud Structure and Model Execution 
 
-💻 dbt Cloud Directory & Execution Flow
-
 Our dbt Cloud models are structured in layers:
 
 1️⃣ Staging Models
@@ -62,7 +60,7 @@ Ensures a consistent structure across locations
 
 Models execute sequentially, following dependencies set in the dbt lineage.
 
-📊 Lineage Diagram and Key Transformations (4:00 - 6:00)
+📊 Lineage Diagram and Key Transformations 
 
 👩‍🎓 dbt Cloud Lineage Diagram
 
