@@ -11,7 +11,7 @@ FROM {{ source('silver_screen', 'movie_catalogue') }}
 
 
 -–models/
-Nj001.sql
+Stg_Nj_001.sql
 
 
 SELECT
@@ -25,7 +25,7 @@ GROUP BY movie_id, month, location
 
 
 -–models/
-Nj002.sql
+Stg_Nj002.sql
 
 
 SELECT
@@ -39,7 +39,7 @@ GROUP BY movie_id, month, location
 
 
 -–models/
-Nj003.sql
+Stg_Nj003.sql
 SELECT
    details AS movie_id,
    DATE_TRUNC('month', timestamp) AS month,
@@ -69,7 +69,7 @@ GROUP BY movie_id, location, month
 
 
 –models/
-Unify_location.sql
+Unify_locations.sql
 
 
 {{ config(materialized='table')}}
