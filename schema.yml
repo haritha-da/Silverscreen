@@ -1,0 +1,96 @@
+﻿version: 2
+
+
+sources:
+ - name: silver_screen    #name of the source you will reference in the models
+   database: silver_screen #name of database
+   schema: public
+   tables:   #name all of the tables you would reference in the models
+     - name: movie_catalogue
+       description: "Detailed information about movies released in 2024 and rented by Silver Screen."
+
+
+     - name: invoices
+       description: "Invoice details for movies rented at different theater locations."
+      
+     - name: nj_001
+       description: "Transaction-level ticket sales data for location NJ_001."
+      
+     - name: nj_002
+       description: "Daily ticket sales data for location NJ_002."
+
+
+     - name: nj_003
+       description: "Sales data for location NJ_003, including tickets, snacks, and drinks."
+      
+models:
+ - name: movie_catalogue_clean
+   description: "Cleans and standardizes movie_catalogue data, handling missing values."
+   columns:
+     - name: movie_id
+       tests:
+         - not_null
+         - unique
+     - name: movie_title
+       tests:
+         - not_null
+     - name: genre
+       tests:
+         - not_null
+ - name: nj001
+   description: "Staging model for NJ_001 - standardizing column names and extracting month."
+   columns:
+     - name: movie_id
+       tests:
+         - not_null
+     - name: revenue
+       tests:
+         - not_null
+ - name: nj002
+   description: "Staging model for NJ_002 - converting daily data to monthly format."
+   columns:
+     - name: movie_id
+       tests:
+         - not_null  
+     - name: month
+       tests:
+         - not_null
+ - name: nj003
+   description: "Staging model for NJ_003 - filtering ticket sales and extracting movie_id."
+   columns:
+     - name: movie_id
+       tests:
+         - not_null
+ - name: invoices
+   description: "Processes invoice data to extract monthly rental costs for each movie at each location."
+   columns:
+     - name: movie_id
+       tests:
+         - not_null
+     - name: rental_cost
+       tests:
+         - not_null
+ - name: unify_location
+   description: "Combines ticket sales data from NJ_001, NJ_002, and NJ_003 to create a unified dataset."
+   columns:
+     - name: movie_id
+       tests:
+         - not_null
+     - name: month
+       tests:
+         - not_null
+     - name: location
+       tests:
+         - not_null
+ - name: final_movie_performance
+   description: "Final model aggregating monthly movie sales data for all locations."     
+   columns:
+     - name: movie_id
+       tests:
+         - not_null    
+     - name: movie_title
+       tests:
+         - not_null
+     - name: month
+       tests:
+         - not_null
